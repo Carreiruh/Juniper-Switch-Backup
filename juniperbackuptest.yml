@@ -1,0 +1,22 @@
+
+# Pull Juniper Switch Configuration
+---
+- name: Retrieve committed configuration
+  hosts: juniper_devices
+  roles:
+    - Juniper.junos
+  connection: local
+  gather_facts: false
+
+  vars:
+    user: "{{ ansible_user }}"
+    passwd: "{{ ansible_password }}"
+
+  tasks:
+    - name: Retrieve srx commited configuration
+      juniper_junos_config:
+        retrieve: "committed"
+        dest_dir: "configuration_backups_vcs/{{ inventory_hostname }}"
+        # dest: "configuration_backups_vcs/{{ inventory_hostname }}/{{ inventory_hostname }}-.conf"
+          # Specify file path on above line
+      register: response

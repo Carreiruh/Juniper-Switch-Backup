@@ -1,0 +1,10 @@
+---
+all:
+
+juniper_devices:
+  hosts:
+    Host_1:
+      ansible_host: x.x.x.x
+  vars:
+    ansible_user: DEVICE_USERNAME
+    ansible_password: DEVICE_PASSWORD
